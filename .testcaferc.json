@@ -1,0 +1,15 @@
+{
+  "browsers": "all",
+  "screenshots": {
+    "path": "./reports/screenshots/",
+    "takeOnFails": true,
+    "pathPattern": "${DATE}_${TIME}/test-${TEST_INDEX}/${USERAGENT}/${FILE_INDEX}.png"
+  },
+  "skipJsErrors": true,
+  "quarantineMode": true,
+  "selectorTimeout": 5000,
+  "assertionTimeout": 7000,
+  "pageLoadTimeout": 8000,
+  "speed": 1,
+  "stopOnFirstFail": false
+}
