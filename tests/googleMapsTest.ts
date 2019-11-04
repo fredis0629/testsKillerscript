@@ -12,7 +12,7 @@ const EXPECTED_ATTRIBUTES: Object = {
 
 fixture`GOOGLE_MAPS_CONSENT`.page`${PAGE_URL}`;
 
-for (let i = GOOGLE_MAPS_CONSENT_TAG.startIdNumber; i <= GOOGLE_MAPS_CONSENT_TAG.count; i++) {
+for (let i = GOOGLE_MAPS_CONSENT_TAG.startIdNumber; i < GOOGLE_MAPS_CONSENT_TAG.startIdNumber + GOOGLE_MAPS_CONSENT_TAG.count; i++) {
   test(`Test for ${GOOGLE_MAPS_CONSENT_TAG.name} ${i}`, async t => {
     const element = Selector(GOOGLE_MAPS_CONSENT_TAG.tagName).withAttribute(
       ELEMENT_IDENTIFY_FIELD.attributeName,

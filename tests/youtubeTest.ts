@@ -12,7 +12,7 @@ const EXPECTED_ATTRIBUTES: Object = {
 
 fixture`YOUTUBE_CONSENT`.page`${PAGE_URL}`;
 
-for (let i = YOUTUBE_CONSENT_TAG.startIdNumber; i <= YOUTUBE_CONSENT_TAG.count; i++) {
+for (let i = YOUTUBE_CONSENT_TAG.startIdNumber; i < YOUTUBE_CONSENT_TAG.startIdNumber + YOUTUBE_CONSENT_TAG.count; i++) {
   test(`Test for ${YOUTUBE_CONSENT_TAG.name} ${i}`, async t => {
     const element = Selector(YOUTUBE_CONSENT_TAG.tagName).withAttribute(ELEMENT_IDENTIFY_FIELD.attributeName, `${ELEMENT_IDENTIFY_FIELD.attributeValue}${i}`);
     await t
