@@ -3,12 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "testcafe all tryTest.ts"
+    "test": "node testcafe.js"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "testcafe": "^1.6.0"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredis0629/testsKillerscript.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fredis0629/testsKillerscript/issues"
+  },
+  "homepage": "https://github.com/fredis0629/testsKillerscript#readme",
+  "description": ""
 }

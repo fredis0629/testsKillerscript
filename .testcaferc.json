@@ -1,5 +1,6 @@
 {
   "browsers": "all",
+  "src": "./tests/",
   "screenshots": {
     "path": "./reports/screenshots/",
     "takeOnFails": true,
