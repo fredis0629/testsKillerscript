@@ -2,26 +2,23 @@ import { Selector } from "testcafe";
 import { TagIdentety } from "../helpers/interfaces";
 import { PAGE_URL, GOOGLE_MAPS_CONSENT_TAG } from "../helpers/constants";
 
-const ELEMENT_IDENTIFY_FIELD: TagIdentety = {
-  attributeName: "id",
-  attributeValue: `privacyProxyElement_`
-};
 const EXPECTED_ATTRIBUTES: Object = {
   pid: GOOGLE_MAPS_CONSENT_TAG.pid
 };
 
-fixture`GOOGLE_MAPS_CONSENT`.page`${PAGE_URL}`;
+fixture`GOOGLE_MAPS`.page`${PAGE_URL}`;
 
-for (let i = GOOGLE_MAPS_CONSENT_TAG.startIdNumber; i < GOOGLE_MAPS_CONSENT_TAG.startIdNumber + GOOGLE_MAPS_CONSENT_TAG.count; i++) {
-  test(`Test for ${GOOGLE_MAPS_CONSENT_TAG.name} ${i}`, async t => {
-    const element = Selector(GOOGLE_MAPS_CONSENT_TAG.tagName).withAttribute(
-      ELEMENT_IDENTIFY_FIELD.attributeName,
-      `${ELEMENT_IDENTIFY_FIELD.attributeValue}${i}`
-    );
+test(`Test for ${GOOGLE_MAPS_CONSENT_TAG.name}`, async t => {
+  const elements = Selector(`[pid=${GOOGLE_MAPS_CONSENT_TAG.pid}]`);
+  const count = await elements.count;
+
+  for (let i = 0; i < count; i++) {
     await t
-      .expect(element.attributes)
+      .expect(elements.nth(i).attributes)
       .contains(EXPECTED_ATTRIBUTES)
-      .expect(element.getAttribute("src"))
-      .notOk();
-  });
-}
+      .expect(elements.nth(i).getAttribute("src"))
+      .notOk()
+      .expect(elements.nth(i).getAttribute("id"))
+      .ok();
+  }
+});
