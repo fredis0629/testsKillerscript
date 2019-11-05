@@ -14,10 +14,10 @@ test(`Test for ${GOOGLE_MAPS_TAG.name} scripts`, async t => {
 
   for (let i = 0; i < countSctiptEl; i++) {
     await t
-      .expect(scriptElements.nth(i).attributes)
-      .contains(EXPECTED_ATTRIBUTES)
       .expect(scriptElements.nth(i).getAttribute("type"))
-      .eql("application/usercentrics");
+      .eql("application/usercentrics", `Element (pid=${GOOGLE_MAPS_TAG.pid}) have wrong attribute 'type' value!`)
+      .expect(scriptElements.nth(i).attributes)
+      .contains(EXPECTED_ATTRIBUTES, `Expected attributes falsy on pid=${GOOGLE_MAPS_TAG.pid} elements!`);
   }
 });
 test(`Test for ${GOOGLE_MAPS_TAG.name}`, async t => {
@@ -26,11 +26,11 @@ test(`Test for ${GOOGLE_MAPS_TAG.name}`, async t => {
 
   for (let i = 0; i < count; i++) {
     await t
-      .expect(mapsElements.nth(i).attributes)
-      .contains(EXPECTED_ATTRIBUTES)
-      .expect(mapsElements.nth(i).getAttribute("src"))
-      .notOk()
       .expect(mapsElements.nth(i).getAttribute("id"))
-      .ok();
+      .ok(`Element (pid=${GOOGLE_MAPS_TAG.pid}) don't have id!`)
+      .expect(mapsElements.nth(i).getAttribute("src"))
+      .notOk(`Src attribute not deleted on pid=${GOOGLE_MAPS_TAG.pid} elements!`)
+      .expect(mapsElements.nth(i).attributes)
+      .contains(EXPECTED_ATTRIBUTES, `Expected attributes falsy on pid=${GOOGLE_MAPS_TAG.pid} elements!`);
   }
 });
