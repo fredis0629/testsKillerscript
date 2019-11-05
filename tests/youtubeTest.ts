@@ -1,14 +1,14 @@
 import { Selector } from "testcafe";
-import { PAGE_URL, YOUTUBE_CONSENT_TAG } from "../helpers/constants";
+import { PAGE_URL, YOUTUBE_TAG } from "../helpers/constants";
 
 const EXPECTED_ATTRIBUTES: Object = {
-  pid: YOUTUBE_CONSENT_TAG.pid
+  pid: YOUTUBE_TAG.pid
 };
 
 fixture`YOUTUBE`.page`${PAGE_URL}`;
 
-test(`Test for ${YOUTUBE_CONSENT_TAG.name} `, async t => {
-  const elements = Selector(`[pid=${YOUTUBE_CONSENT_TAG.pid}]`);
+test(`Test for ${YOUTUBE_TAG.name} `, async t => {
+  const elements = Selector(`[pid=${YOUTUBE_TAG.pid}]`);
   const count = await elements.count;
   for (let i = 0; i < count; i++) {
     await t

@@ -9,7 +9,6 @@ fixture`TWITTER`.page`${PAGE_URL}`;
 
 test(`Test for ${TWITTER_PLUGIN_TAG.name} scripts`, async t => {
   const scriptElements = Selector(`[pid=${TWITTER_PLUGIN_TAG.pid}]`).withAttribute("tagName", "SCRIPT");
-
   const countSctiptEl = await scriptElements.count;
 
   for (let i = 0; i < countSctiptEl; i++) {
@@ -22,18 +21,18 @@ test(`Test for ${TWITTER_PLUGIN_TAG.name} scripts`, async t => {
 });
 
 test(`Test for ${TWITTER_PLUGIN_TAG.name} mock`, async t => {
-  const xingElements = Selector(`[pid=${TWITTER_PLUGIN_TAG.pid}]`).withAttribute("tagName", "TWITTER-MOCK");
+  const twitterElements = Selector(`[pid=${TWITTER_PLUGIN_TAG.pid}]`).withAttribute("tagName", "TWITTER-MOCK");
 
-  const countXingEl = await xingElements.count;
+  const countXingEl = await twitterElements.count;
 
   for (let i = 0; i < countXingEl; i++) {
     console.log(2);
     await t
-      .expect(xingElements.nth(i).attributes)
+      .expect(twitterElements.nth(i).attributes)
       .contains(EXPECTED_ATTRIBUTES)
-      .expect(xingElements.nth(i).getAttribute("type"))
+      .expect(twitterElements.nth(i).getAttribute("type"))
       .eql("twitter")
-      .expect(xingElements.nth(i).getAttribute("id"))
+      .expect(twitterElements.nth(i).getAttribute("id"))
       .ok();
   }
 });
